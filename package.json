@@ -3,6 +3,7 @@
   "description": "parser typescript interface comments",
   "version": "1.0.0",
   "author": "DiamondYuan",
+  "main": "lib/index.js",
   "dependencies": {
     "@babel/generator": "^7.3.3",
     "@babel/parser": "^7.3.3",
