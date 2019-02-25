@@ -1,6 +1,6 @@
 {
-  "name": "bisheng-plugin-typescript-interface",
-  "description": "transform typescript interface comment to document",
+  "name": "interface-comments-parser",
+  "description": "parser typescript interface comments",
   "version": "0.0.1",
   "author": "DiamondYuan",
   "dependencies": {
