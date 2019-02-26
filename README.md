@@ -38,7 +38,7 @@ const result = parse(path.resolve(__dirname, "./demo.ts"), "Demo");
 getFieldMeta(result, "zh-CN");
 ```
 
-### Type
+## Type
 
 ```typescript
 export interface IField {
