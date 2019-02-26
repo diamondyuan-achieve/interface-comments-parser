@@ -1,7 +1,7 @@
 {
   "name": "interface-comments-parser",
   "description": "parser typescript interface comments",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "author": "DiamondYuan",
   "main": "lib/index.js",
   "dependencies": {
