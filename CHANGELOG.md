@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/DiamondYuan/interface-comments-parser/compare/v1.0.1...v2.0.0) (2019-02-26)
+
+
+### Features
+
+* redesign api ([9944217](https://github.com/DiamondYuan/interface-comments-parser/commit/9944217))
+
+
+
 ## [1.0.1](https://github.com/DiamondYuan/interface-comments-parser/compare/v1.0.0...v1.0.1) (2019-02-25)
 
 
