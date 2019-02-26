@@ -23,6 +23,11 @@ export interface LocaleProviderProps {
   children?: React.ReactNode;
 
   noMeta: string;
+
+  /**
+   * 普通的注释
+   */
+  normalComment: string;
 }
 
 export const localeProviderPropsFieldMeta: IField[] = [
@@ -61,6 +66,12 @@ export const localeProviderPropsFieldMeta: IField[] = [
     name: 'noMeta',
     optional: 'false',
     types: 'string'
+  },
+  {
+    name: 'normalComment',
+    optional: 'false',
+    types: 'string',
+    meta: { base: {}, i18n: {} }
   }
 ];
 
@@ -71,7 +82,12 @@ export const localeProviderPropsBaseMeta = [
     types: 'Locale'
   },
   { name: 'children', optional: 'true', types: 'ReactNode' },
-  { name: 'noMeta', optional: 'false', types: 'string' }
+  { name: 'noMeta', optional: 'false', types: 'string' },
+  {
+    name: 'normalComment',
+    optional: 'false',
+    types: 'string'
+  }
 ];
 
 export const localeProviderPropsChineseMeta = [
@@ -84,7 +100,12 @@ export const localeProviderPropsChineseMeta = [
       '语言包配置，语言包可到 [antd/lib/locale-provider](http://unpkg.com/antd/lib/locale-provider/) 目录下寻找'
   },
   { name: 'children', optional: 'true', types: 'ReactNode' },
-  { name: 'noMeta', optional: 'false', types: 'string' }
+  { name: 'noMeta', optional: 'false', types: 'string' },
+  {
+    name: 'normalComment',
+    optional: 'false',
+    types: 'string'
+  }
 ];
 export default class TestSupportClassProperties {
   static propTypes = {
