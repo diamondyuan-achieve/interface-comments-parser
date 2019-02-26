@@ -2,10 +2,11 @@ import { IField, IMeta } from './interface';
 import * as babelParser from '@babel/parser';
 import {
   isTSInterfaceDeclaration,
-  isExportNamedDeclaration
+  isExportNamedDeclaration,
+  isClassDeclaration
 } from '@babel/types';
 import * as fs from 'fs';
-import { parserTsInterfaceDeclaration } from './parser';
+import { parseTsInterfaceDeclaration, parseClassDeclaration } from './parser';
 
 export function parse(filePath: string, name: string): IField[] {
   const ast = babelParser.parse(fs.readFileSync(filePath).toString(), {
@@ -17,7 +18,10 @@ export function parse(filePath: string, name: string): IField[] {
       node = node.declaration;
     }
     if (isTSInterfaceDeclaration(node) && node.id.name === name) {
-      return parserTsInterfaceDeclaration(node);
+      return parseTsInterfaceDeclaration(node);
+    }
+    if (isClassDeclaration(node) && node.id.name === name) {
+      return parseClassDeclaration(node);
     }
   }
   return null;

@@ -13,11 +13,13 @@ const iTestInterfaceFixtures = path.resolve(
   './fixtures/fixtures.tsx'
 );
 
+const classFixtures = path.resolve(__dirname, './fixtures/fixtures.d.ts');
+
 const moduleInterface = path.resolve(__dirname, './fixtures/module.tsx');
 
 describe('test index.ts', () => {
   describe('test parse function', () => {
-    it('should return meta', () => {
+    it('should return meta correct', () => {
       assert.deepEqual(
         parse(iTestInterfaceFixtures, 'ITestInterface'),
         iTestInterfaceFieldMeta
@@ -31,6 +33,18 @@ describe('test index.ts', () => {
         parse(moduleInterface, 'LocaleProviderProps'),
         localeProviderPropsFieldMeta
       );
+    });
+    it('support d.ts', () => {
+      assert.deepEqual(parse(classFixtures, 'ElAlert'), [
+        {
+          optional: 'false',
+          name: 'data',
+          types: 'string',
+          meta: { base: { description: 'test' }, i18n: {} }
+        },
+        { optional: 'false', name: 'type', types: 'AlertType' },
+        { optional: 'true', name: 'description', types: '' }
+      ]);
     });
   });
 
