@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/DiamondYuan/interface-comments-parser/compare/v2.0.0...v2.0.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* throw error when comment no dot containt any meta. ([3eec25a](https://github.com/DiamondYuan/interface-comments-parser/commit/3eec25a))
+
+
+
 # [2.0.0](https://github.com/DiamondYuan/interface-comments-parser/compare/v1.0.1...v2.0.0) (2019-02-26)
 
 
