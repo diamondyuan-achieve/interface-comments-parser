@@ -5,9 +5,6 @@ export function mergeFieldMeta(metaList: IMeta[]): IFieldMeta {
     base: {},
     i18n: {}
   };
-  if (!Array.isArray(metaList) || metaList.length === 0) {
-    return result;
-  }
   for (const meta of metaList) {
     const { language } = meta;
     if (language) {
@@ -28,6 +25,5 @@ export function parserComment(comment: string): IMeta {
       result[data[1]] = data[2].trim();
     }
   }
-
   return result;
 }

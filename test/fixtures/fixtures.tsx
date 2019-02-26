@@ -1,5 +1,7 @@
 type AnchorContainer = HTMLElement | Window;
+import { IField } from '../../src/interface';
 
+// @ts-ignore
 interface ITestInterface {
   /**
    * @default `false`
@@ -63,6 +65,65 @@ interface ITestInterface {
   1: () => void;
 }
 
-interface TestUnionType {
-  value?: 'one' | 'two' | 'three';
-}
+export const iTestInterfaceFieldMeta: IField[] = [
+  {
+    optional: 'true',
+    name: 'disabled',
+    types: 'boolean',
+    meta: {
+      base: { default: '`false`' },
+      i18n: {
+        'en-US': { language: 'en-US', description: 'disabled state of button' },
+        'zh-CN': { language: 'zh-CN', description: '按钮失效状态' }
+      }
+    }
+  },
+  {
+    optional: 'true',
+    name: 'htmlType',
+    types: 'string',
+    meta: {
+      base: { default: '`button`' },
+      i18n: {
+        'en-US': {
+          language: 'en-US',
+          description:
+            'set the original html `type` of `button`, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type)'
+        },
+        'zh-CN': {
+          language: 'zh-CN',
+          description:
+            '设置 `button` 原生的 `type` 值，可选值请参考 [HTML 标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type)'
+        }
+      }
+    }
+  },
+  {
+    optional: 'true',
+    name: 'loading',
+    types: 'boolean \\| {  delay: number;}',
+    meta: {
+      base: { default: '`false`' },
+      i18n: {
+        'en-US': {
+          language: 'en-US',
+          description: 'set the loading status of button'
+        },
+        'zh-CN': { language: 'zh-CN', description: '设置按钮载入状态' }
+      }
+    }
+  },
+  {
+    optional: 'true',
+    name: 'value',
+    types: '\'one\' \\| \'two\' \\| \'three\'',
+    meta: {
+      base: {},
+      i18n: {
+        'en-US': { language: 'en-US', description: 'date' },
+        'zh-CN': { language: 'zh-CN', description: '日期' }
+      }
+    }
+  },
+  { optional: 'true', name: 'getContainer', types: '() => AnchorContainer' }
+];

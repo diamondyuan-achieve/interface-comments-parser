@@ -1,21 +1,9 @@
 // @ts-ignore
 import * as React from 'react';
-// @ts-ignore
-import { ModalLocale } from '../modal/locale';
 import { IField } from '../../src/interface';
 
 interface Locale {
   locale: string;
-  Pagination?: Object;
-  DatePicker?: Object;
-  TimePicker?: Object;
-  Calendar?: Object;
-  Table?: Object;
-  Modal?: ModalLocale;
-  Popconfirm?: Object;
-  Transfer?: Object;
-  Select?: Object;
-  Upload?: Object;
 }
 
 export interface LocaleProviderProps {
@@ -28,7 +16,13 @@ export interface LocaleProviderProps {
    * @description 语言包配置，语言包可到 [antd/lib/locale-provider](http://unpkg.com/antd/lib/locale-provider/) 目录下寻找
    */
   locale: Locale;
+
+  /**
+   * @types ReactNode
+   */
   children?: React.ReactNode;
+
+  noMeta: string;
 }
 
 export const localeProviderPropsFieldMeta: IField[] = [
@@ -56,10 +50,42 @@ export const localeProviderPropsFieldMeta: IField[] = [
     optional: 'true',
     name: 'children',
     types: 'React.ReactNode',
-    meta: undefined
+    meta: {
+      base: {
+        types: 'ReactNode'
+      },
+      i18n: {}
+    }
+  },
+  {
+    name: 'noMeta',
+    optional: 'false',
+    types: 'string'
   }
 ];
 
+export const localeProviderPropsBaseMeta = [
+  {
+    name: 'locale',
+    optional: 'false',
+    types: 'Locale'
+  },
+  { name: 'children', optional: 'true', types: 'ReactNode' },
+  { name: 'noMeta', optional: 'false', types: 'string' }
+];
+
+export const localeProviderPropsChineseMeta = [
+  {
+    name: 'locale',
+    optional: 'false',
+    types: 'Locale',
+    language: 'zh-CN',
+    description:
+      '语言包配置，语言包可到 [antd/lib/locale-provider](http://unpkg.com/antd/lib/locale-provider/) 目录下寻找'
+  },
+  { name: 'children', optional: 'true', types: 'ReactNode' },
+  { name: 'noMeta', optional: 'false', types: 'string' }
+];
 export default class TestSupportClassProperties {
   static propTypes = {
     name: 'name'
