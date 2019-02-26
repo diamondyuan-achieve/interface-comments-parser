@@ -1,3 +1,12 @@
+## [2.1.1](https://github.com/DiamondYuan/interface-comments-parser/compare/v2.0.1...v2.1.1) (2019-02-26)
+
+
+### Features
+
+* support parse class ([4c4974d](https://github.com/DiamondYuan/interface-comments-parser/commit/4c4974d))
+
+
+
 ## [2.0.1](https://github.com/DiamondYuan/interface-comments-parser/compare/v2.0.0...v2.0.1) (2019-02-26)
 
 
