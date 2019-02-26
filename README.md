@@ -35,7 +35,7 @@ const path = require("path");
 const { parse, getFieldMeta } = require("interface-comments-parser");
 
 const result = parse(path.resolve(__dirname, "./demo.ts"), "Demo");
-getFieldMeta(result, "zh-CN");
+const meta = result.map(o => getFieldMeta(o, "zh-CN"));
 ```
 
 ## Type
