@@ -79,6 +79,12 @@ export interface FieldInfo {
   see?: string;
 }
 
+export interface ParamInfo {
+  name: string;
+  required: boolean;
+  description: string;
+}
+
 export interface MethodInfo {
   /**
    * 是否过期
@@ -115,10 +121,7 @@ export interface MethodInfo {
   /**
    * 参数列表
    */
-  param: {
-    name: string;
-    description: string;
-  }[];
+  params: ParamInfo[];
   /**
    * 返回结果
    */
