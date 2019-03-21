@@ -6,6 +6,8 @@ import {
   isClassDeclaration
 } from '@babel/types';
 
+import { interfaceParser } from './parser';
+
 export function parse(
   code: string,
   name: string,
@@ -20,7 +22,8 @@ export function parse(
       node = node.declaration;
     }
     if (isTSInterfaceDeclaration(node) && node.id.name === name) {
-      // todo
+      let _result = interfaceParser(node);
+      return _result.map(o => o.base);
     }
     if (isClassDeclaration(node) && node.id.name === name) {
       // todo

@@ -8,6 +8,10 @@ const classFixtures = path.resolve(__dirname, './fixtures/fixtures.tsx');
 const code = fs.readFileSync(classFixtures).toString();
 
 describe('test index.ts', () => {
+  it('should work correct', () => {
+    assert.equal(parse(code, 'ITestInterface') !== null, true);
+  });
+
   it('should return null when pass empty interface name', () => {
     assert.equal(parse(code, ''), null);
   });

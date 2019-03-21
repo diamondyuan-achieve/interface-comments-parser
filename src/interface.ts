@@ -85,3 +85,8 @@ export interface MethodInfo {
    */
   return: string;
 }
+
+export interface I18nInfo<T> {
+  base: T;
+  [locale: string]: T;
+}
