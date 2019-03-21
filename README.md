@@ -15,6 +15,10 @@
 npm i --save interface-comments-parser
 ```
 
+## Warning
+
+This is an initial draft, API is not stable
+
 ## Usage
 
 ### Parse
