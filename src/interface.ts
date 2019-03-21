@@ -1,40 +1,92 @@
-export interface IField {
+export interface FieldInfo {
   /**
-   * @language en-US
-   * @description name of fields
+   * 是否过期
    */
+  deprecated: boolean;
   /**
-   * @language zh-CN
-   * @description 字段名
+   * 字段名称
    */
   name: string;
-
   /**
-   * @language zh-CN
-   * @description 字段是否可选(即有没有问号)
+   * 是否必填
    */
-  optional: string;
-
+  required: boolean;
   /**
-   * @language zh-CN
-   * @description 字段类型
+   * 类型
    */
-  types: string;
-
+  type: string;
   /**
-   * @language zh-CN
-   * @description 字段信息，用户备注。
+   * 第一次出现的版本号
    */
-  meta?: IFieldMeta;
+  since?: string;
+  /**
+   * 默认类型
+   */
+  default?: string;
+  /**
+   * 概要
+   */
+  summary?: string;
+  /**
+   * 详细说明
+   */
+  remarks?: string;
+  /**
+   * 引用
+   */
+  see?: string;
 }
 
-export interface IMeta {
-  [key: string]: string;
+export interface ParamInfo {
+  name: string;
+  required: boolean;
+  description: string;
 }
 
-export interface IFieldMeta {
-  base: IMeta;
-  i18n: {
-    [language: string]: IMeta;
-  };
+export interface MethodInfo {
+  /**
+   * 是否过期
+   */
+  deprecated: boolean;
+  /**
+   * 字段名称
+   */
+  name: string;
+  /**
+   * 是否必填
+   */
+  required: boolean;
+  /**
+   * 类型
+   */
+  type: string;
+  /**
+   * 第一次出现的版本号
+   */
+  since?: string;
+  /**
+   * 概要
+   */
+  summary?: string;
+  /**
+   * 详细说明
+   */
+  remarks?: string;
+  /**
+   * 引用
+   */
+  see?: string;
+  /**
+   * 参数列表
+   */
+  params: ParamInfo[];
+  /**
+   * 返回结果
+   */
+  return: string;
+}
+
+export interface I18nInfo<T> {
+  base: T;
+  [locale: string]: T;
 }

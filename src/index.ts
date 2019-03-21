@@ -1,15 +1,19 @@
-import { IField, IMeta } from './interface';
+import { MethodInfo, FieldInfo } from './interface';
 import * as babelParser from '@babel/parser';
 import {
   isTSInterfaceDeclaration,
   isExportNamedDeclaration,
   isClassDeclaration
 } from '@babel/types';
-import * as fs from 'fs';
-import { parseTsInterfaceDeclaration, parseClassDeclaration } from './parser';
 
-export function parse(filePath: string, name: string): IField[] {
-  const ast = babelParser.parse(fs.readFileSync(filePath).toString(), {
+import { interfaceParser } from './parser';
+
+export function parse(
+  code: string,
+  name: string,
+  _locale?: string
+): Array<FieldInfo | MethodInfo> | null {
+  const ast = babelParser.parse(code, {
     sourceType: 'module',
     plugins: ['typescript', 'classProperties']
   });
@@ -18,24 +22,12 @@ export function parse(filePath: string, name: string): IField[] {
       node = node.declaration;
     }
     if (isTSInterfaceDeclaration(node) && node.id.name === name) {
-      return parseTsInterfaceDeclaration(node);
+      let _result = interfaceParser(node);
+      return _result.map(o => o.base);
     }
     if (isClassDeclaration(node) && node.id.name === name) {
-      return parseClassDeclaration(node);
+      // todo
     }
   }
   return null;
-}
-
-export function getFieldMeta(field: IField, language?: string): IMeta {
-  const { meta, name, optional, types } = field;
-  const baseInfo = {
-    name,
-    optional,
-    types
-  };
-  if (!meta) {
-    return baseInfo;
-  }
-  return Object.assign(baseInfo, meta.base, meta.i18n[language]);
 }
